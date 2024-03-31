@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Club</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="~/js/Club/Create.js"></script>
+
+</head>
+<body>
+    <div>
+        <form name="clubForm" ng-submit="submitForm()" enctype="multipart/form-data">
+            <input type="hidden" ng-model="club.AppUserId" />
+
+            <div class="form-group">
+                <label>Title</label>
+                <input ng-model="club.Title" class="form-control" placeholder="Title" required>
+                <span class="text-danger" ng-show="submitted && !club.Title">Title is required</span>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea ng-model="club.Description" class="form-control" placeholder="Description" required></textarea>
+                <span class="text-danger" ng-show="submitted && !club.Description">Description is required</span>
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <select ng-model="club.ClubCategory" ng-options="category for category in categories" class="form-control" required>
+                    <option value="">-- Select --</option>
+                </select>
+                <span class="text-danger" ng-show="submitted && !club.ClubCategory">Category is required</span>
+            </div>
+
+            <div class="form-group">
+                <label>Street</label>
+                <input ng-model="club.Address.Street" class="form-control" placeholder="Street" required>
+                <span class="text-danger" ng-show="submitted && !club.Address.Street">Street is required</span>
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <input ng-model="club.Address.City" class="form-control" placeholder="City" required>
+                <span class="text-danger" ng-show="submitted && !club.Address.City">City is required</span>
+            </div>
+
+            <div class="form-group">
+                <label>State</label>
+                <input ng-model="club.Address.State" class="form-control" placeholder="State" required>
+                <span class="text-danger" ng-show="submitted && !club.Address.State">State is required</span>
+            </div>
+
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" ng-model="club.Image" class="form-control" placeholder="Image" required>
+                <span class="text-danger" ng-show="submitted && !club.Image">Image is required</span>
+            </div>
+
+            <!-- Add other fields of the Club model here -->
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <create-club></create-club>
+</body>
+</html>
